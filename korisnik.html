@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset=utf-8 />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="zasve.css">
+        <link rel="stylesheet" type="text/css" href="restoran.css">
+        <title>Email/Password Authentication Example</title>
+
+        <!-- Material Design Theming -->
+        <link rel="stylesheet" href="https://code.getmdl.io/1.1.3/material.orange-indigo.min.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+        <script defer src="https://code.getmdl.io/1.1.3/material.min.js"></script>
+
+        <script src="https://www.gstatic.com/firebasejs/5.7.1/firebase.js"></script>
+       
+        <script>
+            // Initialize Firebase
+            var config = {
+                apiKey: "AIzaSyAJOh_OdCF1wWXpSgNl3J9WDr4jsUpXYcg",
+                authDomain: "hr-foi-restoranko.firebaseapp.com",
+                databaseURL: "https://hr-foi-restoranko.firebaseio.com",
+                projectId: "hr-foi-restoranko",
+                storageBucket: "hr-foi-restoranko.appspot.com",
+                messagingSenderId: "63085762641"
+            };
+            firebase.initializeApp(config);
+        </script>
+         <script src="https://www.gstatic.com/firebasejs/5.7.1/firebase-auth.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/5.7.1/firebase-database.js"></script>
+        <script src="korisnik.js"></script>
+
+    </head>
+    <body>
+        <div >
+            <header style="background-color: #536DFE; text-align: center">
+                <div style="background-color: #536DFE">
+                    <div  style="background-color: #536DFE">
+                        <a><h3 style="color: white; margin-top: 0px">Restoranko</h3></a>
+                    </div>
+                </div>
+
+
+                <div>
+
+                    <ul>
+                        <li><a class="active" href="pocetna.html">Početna</a></li>
+                        <li id="bar"><a href="login.html">Prijava/Odjava</a></li>
+                        <li id="res"><a href="restoran.html">Dodaj restoran</a></li>
+                        <li><a href="#about">About</a></li>
+                    </ul>
+                </div>
+
+
+            </header>
+        </div>
+        <br><br><br>
+        <div  class="form-style-6">
+            <h1>Podaci o korisniku</h1>
+            <form>
+                <input type="text"  id="ime" name="field2" placeholder="Ime" />
+                <input type="text" id="prezime" name="field1" placeholder="Prezime" />         
+                <input type="text" id="korime" name="field1" placeholder="Korisničko ime" />
+                <input type="text" id="email" name="field1" placeholder="Email adresa" /> 
+                <input type="text" id="lozinka" name="field1" placeholder="Lozinka" /> 
+                <select id="tip">
+                    <option value="Administrator">Administarator</option>
+                    <option value="Moderator">Moderator</option>
+                    <option value="Registrirani">Registrirani</option>
+                  
+                </select>
+                <input type="submit" value="Spremi" id="sub" onclick="Registriraj();" />
+            </form>
+        </div>
+
+
+
+    </body>
+</html>

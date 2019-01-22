@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset=utf-8 />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="zasve.css">
+        <link rel="stylesheet" type="text/css" href="restoran.css">
+
+
+        <title>Email/Password Authentication Example</title>
+
+        <!-- Material Design Theming -->
+        <link rel="stylesheet" href="https://code.getmdl.io/1.1.3/material.orange-indigo.min.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+        <script defer src="https://code.getmdl.io/1.1.3/material.min.js"></script>
+
+        <link rel="stylesheet" href="main.css">
+
+        <!-- Import and configure the Firebase SDK -->
+        <!-- These scripts are made available when the app is served or deployed on Firebase Hosting -->
+        <!-- If you do not serve/host your project using Firebase Hosting see https://firebase.google.com/docs/web/setup -->
+
+        <script src="https://www.gstatic.com/firebasejs/5.7.1/firebase.js"></script>
+        <script>
+            // Initialize Firebase
+            var config = {
+                apiKey: "AIzaSyAJOh_OdCF1wWXpSgNl3J9WDr4jsUpXYcg",
+                authDomain: "hr-foi-restoranko.firebaseapp.com",
+                databaseURL: "https://hr-foi-restoranko.firebaseio.com",
+                projectId: "hr-foi-restoranko",
+                storageBucket: "hr-foi-restoranko.appspot.com",
+                messagingSenderId: "63085762641"
+            };
+            firebase.initializeApp(config);
+        </script>
+        <script src="login.js"></script>
+
+   
+    </head>
+    <body>
+        <div >
+            <header style="background-color: #536DFE; text-align: center">
+                <div style="background-color: #536DFE">
+                    <div  style="background-color: #536DFE">
+                        <a><h3 style="color: white; margin-top: 0px">Restoranko</h3></a>
+                    </div>
+                </div>
+
+
+
+
+                <div>
+
+                    <ul>
+                        <li><a class="active" href="pocetna.html">Početna</a></li>
+                        <li id="bar"><a href="login.html">Prijava/Odjava</a></li>
+                        <li id="res"><a href="restoran.html">Dodaj restoran</a></li>
+                        <li><a href="#about">About</a></li>
+                    </ul>
+                </div>
+
+
+            </header>
+
+
+        </div>
+        <br><br>  <br><br>
+
+
+        <div style="text-align: center">
+            <main style="text-align: left" class="mdl-layout__content mdl-color--white-100">
+                <div class="mdl-cell mdl-cell--12-col mdl-cell--12-col-tablet mdl-grid">
+
+                    <!-- Container for the demo -->
+                    <div class="mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-cell--12-col-tablet mdl-cell--12-col-desktop">
+                        <div class="mdl-card__title mdl-color--light-blue-600 mdl-color-text--white">
+                            <h2 class="mdl-card__title-text">Prijava</h2>
+                        </div>
+                        <div class="mdl-card__supporting-text mdl-color-text--grey-600">
+                            <p>Unesite e-mail adresu i lozinku za prijavu</p>
+
+                            <input class="mdl-textfield__input" style="display:inline;width:auto;" type="text" id="email" name="email" placeholder="Email"/>
+                            &nbsp;&nbsp;&nbsp;
+                            <input class="mdl-textfield__input" style="display:inline;width:auto;" type="password" id="password" name="password" placeholder="Password"/>
+                            <br/><br/>
+                            <button disabled class="mdl-button mdl-js-button mdl-button--raised" id="quickstart-sign-in" name="signin">Prijavi</button>
+                            &nbsp;&nbsp;&nbsp;
+
+
+                            <!-- Container where we'll display the user details -->
+
+                        </div>
+                    </div>
+
+                </div>
+            </main>
+        </div>
+        <div class="quickstart-user-details-container">
+            Firebase sign-in status: <span id="quickstart-sign-in-status">Unknown</span>
+            <div>Firebase auth <code>currentUser</code> object value:</div>
+            <pre><code id="quickstart-account-details">null</code></pre>
+        </div>
+    </body>
+</html>
