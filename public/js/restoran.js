@@ -1,6 +1,7 @@
 
 var tblUsers = document.getElementById('tbl_users_list');
 var databaseRef = firebase.database().ref('users/');
+var databaseRefRest = firebase.database().ref('restoran/');
 var rowIndex = 1;
 
 databaseRef.once('value', function (snapshot) {
@@ -19,17 +20,23 @@ databaseRef.once('value', function (snapshot) {
 });
 
 function UnesiRestoran() {
-    var oib = document.getElementById('oib').value;
+    
+//oib?
     var naziv = document.getElementById('naziv').value;
     var adresa = document.getElementById('adresa').value;
-    var broj = document.getElementById('brojmjesta').value;
+    var kontakt = document.getElementById('kontakt').value;
+	var weblink = document.getElementById('weblink').value;
+	var opis = document.getElementById('opis').value
+	
 
     UploadFiles(datoteke, oib);
     var data = {
         resotran_id: oib,
         Naziv: naziv,
-        BrojMjesta: broj,
-        Adresa: adresa
+        Kontakt: kontakt,
+        Adresa: adresa,
+		WebLink: weblink,
+		Opis: opis
 
     }
 
@@ -38,10 +45,10 @@ function UnesiRestoran() {
     firebase.database().ref().update(updates);
 
 
-
-    alert('The user is created successfully!');
+    alert('Restoran je uspješno kreiran!');
     reload_page();
 }
+
 
 var datoteke = [];
 

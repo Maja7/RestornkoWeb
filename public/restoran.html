@@ -1,0 +1,164 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Kreiranje restorana</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="author" content="" />
+
+	<link rel="shortcut icon" href="favicon.ico">
+	<link href="https://fonts.googleapis.com/css?family=Quicksand:300,400,500,700" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Playfair+Display:400,400i,700" rel="stylesheet">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/5.0.0/firebase-<PACKAGE>.js"></script>
+	
+	<link rel="stylesheet" href="css/animate2.css">
+	<link rel="stylesheet" href="css/icomoon.css">
+	<link rel="stylesheet" href="css/bootstrap2.css">
+	<link rel="stylesheet" href="css/flexslider.css">
+	<link rel="stylesheet" href="fonts/flaticon/font/flaticon.css">
+	<link rel="stylesheet" href="css/owl.carousel.min2.css">
+	<link rel="stylesheet" href="css/owl.theme.default.min.css">
+	<link rel="stylesheet" href="css/style2.css">
+
+	<script src="js/modernizr-2.6.2.min.js"></script>
+		
+
+<script src="https://www.gstatic.com/firebasejs/5.8.2/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyAJOh_OdCF1wWXpSgNl3J9WDr4jsUpXYcg",
+    authDomain: "hr-foi-restoranko.firebaseapp.com",
+    databaseURL: "https://hr-foi-restoranko.firebaseio.com",
+    projectId: "hr-foi-restoranko",
+    storageBucket: "hr-foi-restoranko.appspot.com",
+    messagingSenderId: "63085762641"
+  };
+  firebase.initializeApp(config);
+</script>
+		<script src="js/podaci.js"></script>
+        <script src="js/logout.js"></script>
+	
+	</head>
+	<body>
+	<style>
+	.stupac{
+		float: left;
+		width: 40%;
+		margin-left: 5%;
+		margin-right: 5%;
+	}
+	.red{
+		width: 100%;
+		float: left;
+		margin-left: 10%;
+		text-align: center;
+	}
+	#korisnik{
+		width: 100%;
+		text-align: center;
+	}
+	
+	</style>
+	<div id="colorlib-page">
+		<div class="container-wrap">
+		
+		<aside id="colorlib-aside" class="border js-fullheight">
+			<div class="text-center">
+			
+				<div class="author-img" id="slikaKorisnika"></div>
+				<h3 id="korisnik"></h3>
+				<span class="position">Moderator</span>
+			</div>
+			<nav id="colorlib-main-menu" role="navigation" class="navbar">
+				<div id="navbar" class="collapse">
+					<ul>
+						<li><a href="pocetna.html" data-nav-section="home">Početna</a></li>
+						<li class="active"><a href="restoran.html" data-nav-section="about">Kreiranje restorana</a></li>
+						<li><a href="korisnik.html" data-nav-section="services">Moderatori</a></li>
+					
+				<br>
+						<button onclick="Logout()" style = "border: none;  background-color: transparent;">
+								<a class="btn btn-info btn-sm">
+								<span class="glyphicon glyphicon-log-out"></span> Odjava
+								</a></button>
+					</ul>
+				</div>
+			</nav>
+
+			<br>
+			<div class="colorlib-footer">
+				<p>&copy; Copyright 2018. Restoranko team, Projekt iz kolegija Analiza i razvoj, FOI</p>
+			</div>
+
+		</aside>
+		<!-- lijeva strana s podacima i izbornikom -->
+
+		<div id="colorlib-main">
+		
+			<!-- restorani forma -->
+		<section class="colorlib-contact">
+		
+					<div class="red">
+						<h2 style="text-align:center; margin-top:5%; margin-bottom:5%">Kreiranje restorana<h2>
+					</div>
+				<div class="red">
+							
+								<div class="stupac">
+									<form>
+										<div class="form-group">
+											<input type="text" class="form-control"  id="naziv" name="naziv" placeholder="Naziv restorana" />
+										</div>
+										<div class="form-group">
+											<input type="text" class="form-control" id="adresa" name="adresa" placeholder="Adresa restorana" />
+										</div>
+										<div class="form-group">
+											<input type="text" class="form-control"  id="kontakt" name="kontakt" placeholder="Kontakt" /> 
+										</div>
+										<div class="form-group">
+											<input type="text" class="form-control"  id="weblink" name="weblink" placeholder="Web link (www.restoran.hr)" /> 
+										</div>
+								</div>
+								<div class="stupac">
+										<div class="form-group">
+											<textarea cols="30" rows="8" class="form-control" id="opis" name="opis" placeholder="Kratki opis restorana" /></textarea>
+										</div>
+										<div class="form-group">
+											 <input id="file-input" type="file" name="name" style="display: none;" />
+                <ol id="file-list"></ol><br>
+                <input type="button" class="btn btn-primary btn-send-message" value="Učitaj sliku restorana" onclick="FileDialog();"/><br><br>
+										</div>
+								</div>
+				</div><div class="red" >
+										<div class="form-group">
+											<input type="button" class="btn btn-primary btn-send-message" value="Spremi" id="sub" onclick="UnesiRestoran();">
+										</div>
+									</form>
+								</div>
+							
+			</section>
+			
+		</div>
+	</div>
+	</div>
+	</div>
+
+	<!-- jQuery -->
+	<script src="js/jquery.min.js"></script>
+	<script src="js/jquery.easing.1.3.js"></script>
+	<!-- Bootstrap -->
+	<script src="js/bootstrap.min2.js"></script>
+	<script src="js/jquery.waypoints2.min.js"></script>
+	<script src="js/jquery.flexslider-min.js"></script>
+	<script src="js/owl.carousel.min2.js"></script>
+	<script src="js/jquery.countTo.js"></script>
+
+	
+	<script src="js/main2.js"></script>
+	<script src="js/restoran.js"></script>
+	</body>
+</html>

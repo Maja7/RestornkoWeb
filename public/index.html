@@ -23,9 +23,22 @@
     <link rel="stylesheet" href="fonts/fontawesome/css/font-awesome.min.css">
 
     <link rel="stylesheet" href="fonts/flaticon/font/flaticon.css">
-
-    <!-- Theme Style -->
     <link rel="stylesheet" href="css/style.css">
+	
+	<script src="https://www.gstatic.com/firebasejs/5.8.2/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyAJOh_OdCF1wWXpSgNl3J9WDr4jsUpXYcg",
+    authDomain: "hr-foi-restoranko.firebaseapp.com",
+    databaseURL: "https://hr-foi-restoranko.firebaseio.com",
+    projectId: "hr-foi-restoranko",
+    storageBucket: "hr-foi-restoranko.appspot.com",
+    messagingSenderId: "63085762641"
+  };
+  firebase.initializeApp(config);
+</script>
+        <script src="js/login.js"></script>
 
   </head>
   <body class="bg-light">
@@ -112,8 +125,5 @@
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
 
     <script src="js/main.js"></script>
-	<script src="https://www.gstatic.com/firebasejs/5.7.0/firebase.js"></script>
-
- <script src="js/restoranko.js" type="text/javascript"></script>
   </body>
 </html>
