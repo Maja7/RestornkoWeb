@@ -3,17 +3,17 @@
 	<head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Početna</title>
+	<title>Recenzije</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="author" content="" />
 
 	<link rel="shortcut icon" href="favicon.ico">
-
 	<link href="https://fonts.googleapis.com/css?family=Quicksand:300,400,500,700" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Playfair+Display:400,400i,700" rel="stylesheet">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 	
 	<link rel="stylesheet" href="css/animate2.css">
 	<link rel="stylesheet" href="css/icomoon.css">
@@ -25,7 +25,9 @@
 	<link rel="stylesheet" href="css/style2.css">
 
 	<script src="js/modernizr-2.6.2.min.js"></script>
-	<script src="https://www.gstatic.com/firebasejs/5.8.2/firebase.js"></script>
+		
+
+<script src="https://www.gstatic.com/firebasejs/5.8.2/firebase.js"></script>
 <script>
   // Initialize Firebase
   var config = {
@@ -38,11 +40,22 @@
   };
   firebase.initializeApp(config);
 </script>
-
-		
+	
 	</head>
 	<body>
-		<style>
+	<style>
+	.stupac{
+		float: left;
+		width: 40%;
+		margin-left: 5%;
+		margin-right: 5%;
+	}
+	.red{
+		width: 100%;
+		float: left;
+		margin-left: 10%;
+		text-align: center;
+	}
 	#korisnik{
 		width: 100%;
 		text-align: center;
@@ -54,7 +67,7 @@
 		
 		<aside id="colorlib-aside" class="border js-fullheight">
 			<div class="text-center">
-		
+			
 				<div class="author-img" id="slikaKorisnika"></div>
 				<h3 id="korisnik"></h3>
 				<span id="position" class="position"></span>
@@ -62,12 +75,12 @@
 			<nav id="colorlib-main-menu" role="navigation" class="navbar">
 				<div id="navbar" class="collapse">
 					<ul>
-						<li class="active"><a href="#" data-nav-section="home">Početna</a></li>
-						<li><a href="restoran.html" data-nav-section="about">Kreiranje restorana</a></li>
-						<li><a href="recenzije.html" data-nav-section="services">Recenzije</a></li>
+						<li><a href="pocetna.html" data-nav-section="home">Početna</a></li>
+						<li <a href="restoran.html" data-nav-section="about">Kreiranje restorana</a></li>
+						<li class="active"><a href="recenzije.html" data-nav-section="services">Recenzije</a></li>
 					
 				<br>
-						<button id="btnLogout" style = "border: none;  background-color: transparent;">
+						<button onclick="Logout()" style = "border: none;  background-color: transparent;">
 								<a class="btn btn-info btn-sm">
 								<span class="glyphicon glyphicon-log-out"></span> Odjava
 								</a></button>
@@ -84,22 +97,43 @@
 		<!-- lijeva strana s podacima i izbornikom -->
 
 		<div id="colorlib-main">
-			
-			<img src="images/pocetna.png" alt="pozdravna poruka">
+		
+			<!-- restorani forma -->
+		<section class="colorlib-contact">
+		
+				<div class="red">
+					<h2 style="text-align:center; margin-top:5%; margin-bottom:5%">Recenzije<h2>
+				</div>
+				<div class="red">
+					<table style="border: 2px; margin-bottom: 5%;">
+						<thead style="background-color: #00bcd4; color: white; font-weight: bold;">
+							<tr>
+								<td>Naziv restorana</td>
+								<td>Ocjena</td>
+								<td>Povratna informacija</td>
+							</tr>
+						</thead>
+						<tbody id="recenzija" style="background-color: #cce9ef;">
+							
+						</tbody>
+					</table>
+				</div>
+		
+		</section>
 			
 		</div>
 	</div>
 	</div>
 	</div>
 
+	<!-- jQuery -->
 	<script src="js/jquery.min.js"></script>
 	<script src="js/jquery.easing.1.3.js"></script>
+	<!-- Bootstrap -->
 	<script src="js/bootstrap.min2.js"></script>
 	<script src="js/jquery.flexslider-min.js"></script>
 	<script src="js/owl.carousel.min2.js"></script>
 	<script src="js/jquery.countTo.js"></script>
-
 	<script src="js/logout.js"></script>
-
 	</body>
 </html>

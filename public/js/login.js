@@ -10,20 +10,19 @@ function SignIn() {
         var email = document.getElementById('email').value;
         var password = document.getElementById('lozinka').value;
         
-        firebase.auth().signInWithEmailAndPassword(email, password).catch(function (error) {
-            window.location.href = 'https://hr-foi-restoranko.firebaseapp.com/';
-            var errorCode = error.code;
-            var errorMessage = error.message;
+		if(email = "mrukav@foi.hr"){
+			firebase.auth().signInWithEmailAndPassword(email, password).catch(function (error) {
+				var errorCode = error.code;
+				var errorMessage = error.message;
 
-            if (errorCode === 'auth/wrong-password') {
-                alert('Pogreša lozinka.');
-            } else {
-                alert(errorMessage);
-            }
-            console.log(error);
+				if (errorCode === 'auth/wrong-password') {
+					alert('Pogreša lozinka.');
+				} else {
+					alert(errorMessage);
+				}
 
-
-        });
+			});
+		}
 
     }
 

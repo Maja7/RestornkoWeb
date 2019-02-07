@@ -1,4 +1,4 @@
-
+var count=0;
 var tblUsers = document.getElementById('tbl_users_list');
 var databaseRef = firebase.database().ref('users/');
 var databaseRefRest = firebase.database().ref('restoran/');
@@ -21,27 +21,35 @@ databaseRef.once('value', function (snapshot) {
 
 function UnesiRestoran() {
     
-//oib?
-    var naziv = document.getElementById('naziv').value;
+		const dbRef = firebase.database().ref().child('restoran');
+		
+		dbRef.on('value',function(snap){
+			count++;
+		});
+		
+	count++;
+	console.log(count);
+    var naziv = document.getElementById('nazivRestorana').value;
     var adresa = document.getElementById('adresa').value;
     var kontakt = document.getElementById('kontakt').value;
 	var weblink = document.getElementById('weblink').value;
 	var opis = document.getElementById('opis').value
-	
+	var slika = document.getElementById('file-input');
 
-    UploadFiles(datoteke, oib);
+    UploadFiles(datoteke, count);
     var data = {
-        resotran_id: oib,
-        Naziv: naziv,
-        Kontakt: kontakt,
-        Adresa: adresa,
-		WebLink: weblink,
-		Opis: opis
+        adresa: adresa,
+        kontakt: kontakt,
+		nazivRestorana: naziv,
+		opis: opis,
+		restoranId: count,
+		slika: "gs://hr-foi-restoranko.appspot.com/restorani/"+count+".jpg",
+		webLink: weblink
 
     }
 
     var updates = {};
-    updates['/restoran/' + oib] = data;
+    updates['/restoran/' + count] = data;
     firebase.database().ref().update(updates);
 
 
@@ -79,3 +87,17 @@ function Upload(datoteka, resID) {
         alert("exception.message");
     }
 }
+window.onload = function () {
+     
+      firebase.auth().onAuthStateChanged(firebaseUser => {
+	  if(firebaseUser){
+		
+		var uid = firebase.auth().currentUser.uid;
+		document.getElementById('btnRestoran').addEventListener('click', UnesiRestoran, false);
+	  
+	  }else{
+		  console.log('not logged in');
+		  window.location.href = 'https://hr-foi-restoranko.firebaseapp.com/';
+	  }
+  });
+};

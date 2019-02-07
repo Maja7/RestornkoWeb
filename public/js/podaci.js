@@ -1,3 +1,4 @@
+var database;
 
 function initApp() {
 
@@ -18,35 +19,24 @@ function initApp() {
     });
 	
 }
-var tblUsers = document.getElementById('tbl_users_list');
-var databaseRef = firebase.database().ref('users/');
-var rowIndex = 1;
 
-databaseRef.once('value', function (snapshot) {
-    snapshot.forEach(function (childSnapshot) {
-        var childKey = childSnapshot.key;
-        var childData = childSnapshot.val();
-
-        var row = tblUsers.insertRow(rowIndex);
-        var cellId = row.insertCell(0);
-        var cellName = row.insertCell(1);
-        cellId.appendChild(document.createTextNode(childKey));
-        cellName.appendChild(document.createTextNode(childData.user_name));
-
-        rowIndex = rowIndex + 1;
-    });
-});
 
 window.onload = function () {
      
     initApp();
       firebase.auth().onAuthStateChanged(firebaseUser => {
 	  if(firebaseUser){
-		  console.log(firebaseUser);
-		  
-		  
-		  
-		  document.getElementById('korisnik').innerHTML = firebaseUser.email;
+		var database = firebase.database();
+		var uid = firebase.auth().currentUser.uid;
+		const podaci = getElementById('korisnik');
+		const dbRef = firebase.database().ref().child('user');
+		const dbRefUser = dbRef.child(uid);
+		
+		dbRefUser.on('child_added',snap => {
+			podaci.innerHTML = snap.val();
+		});
+		
+		 
 		  document.getElementById('slikaKorisnika').style.backgroundImage = "url(images/avatar.png)";
 		  document.getElementById('position').innerHTML = 'moderator';
 	  }else{
