@@ -113,16 +113,7 @@ window.onload = function () {
 			podaci.innerHTML = snap.child('ime').val() + " " + snap.child('prezime').val();
 			email.innerHTML=snap.child('email').val();
 			var korIme = snap.child('korisnickoIme').val();
-			var profilna = snap.child('putanjaSlike').val();
-			if(profilna == "gs://hr-foi-restoranko.appspot.com/images/default.png"){
-				slika.style.backgroundImage = "url(images/avatar.png)";
-			}else{
-				var imgRef = stRef('images/'+korIme);
-				imgRef.getDownloadURL().then(function(url) {
-					var pulledProfileImage = url;
-					slika.src = pulledProfileImage;
-				});
-			}
+			slika.style.backgroundImage = "url(images/avatar.png)";
 		});
 		
 		const dbRefRec = firebase.database().ref().child('recenzije');
@@ -135,6 +126,23 @@ window.onload = function () {
 			$("#recenzija").append("<tr><td>"+restoran+"</td><td>"+ocjena+"</td><td>"+info+"<td></tr>");
 		});
 		
+		const dbRefRez = firebase.database().ref().child('rezervacija');
+		
+		dbRefRez.on('value',function(snapshot) {
+			snapshot.forEach(function(childSnapshot){
+				var childKey = childSnapshot.key;
+				const dbRefRezSt = firebase.database().ref().child('rezervacija/'+childKey);
+				dbRefRezSt.on('child_added',snap => {
+					var restoran = snap.child('nazivRestorana').val();
+					var ID = snap.child('rezervacijaId').val();
+					var korisnik = snap.child('korisnik').val();
+					var dolazak = snap.child('dolazak').val();
+					var odlazak = snap.child('odlazak').val();
+					var potvrda = snap.child('potvrdaDolaska').val();
+					$("#rezervacije").append("<tr><td>"+ID+"</td><td>"+restoran+"</td><td>"+korisnik+"</td><td>"+dolazak+"</td><td>"+odlazak+"</td><td>"+potvrda+"<td></tr>");
+				});
+			});
+		});
 		
 		document.getElementById('btnLogout').addEventListener('click', Logout, false);
 	  }else{

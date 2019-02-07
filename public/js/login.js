@@ -10,14 +10,16 @@ function SignIn() {
         var email = document.getElementById('email').value;
         var password = document.getElementById('lozinka').value;
         
-		if(email = "mrukav@foi.hr"){
+		if(email != "mrukav@foi.hr"){
+			alert("Korisnik se ne može prijaviti!")
+		}else{
 			firebase.auth().signInWithEmailAndPassword(email, password).catch(function (error) {
 				var errorCode = error.code;
 				var errorMessage = error.message;
 
 				if (errorCode === 'auth/wrong-password') {
 					alert('Pogreša lozinka.');
-				} else {
+				}else {
 					alert(errorMessage);
 				}
 
