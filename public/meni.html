@@ -3,7 +3,7 @@
 	<head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Kreiranje restorana</title>
+	<title>Kreiranje menija</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="author" content="" />
 
@@ -50,6 +50,12 @@
 		margin-left: 5%;
 		margin-right: 5%;
 	}
+	.stupac3{
+		float: left;
+		width: 27%;
+		margin-left: 5%;
+		margin-right: 5%;
+	}
 	.red{
 		width: 100%;
 		float: left;
@@ -60,12 +66,14 @@
 		width: 100%;
 		text-align: center;
 	}
-	
+	.td{
+		width: 30px;
+	}
 	</style>
 	<div id="colorlib-page">
-		<div class="container-wrap">
+		<div>
 		
-		<aside id="colorlib-aside" class="border js-fullheight">
+		<aside id="colorlib-aside" class="border js-fullheight" style="height: 100%;">
 			<div class="text-center">
 			
 				<div class="author-img" id="slikaKorisnika"></div>
@@ -76,10 +84,11 @@
 				<div id="navbar" class="collapse">
 					<ul>
 						<li><a href="pocetna.html" data-nav-section="home">Početna</a></li>
-						<li class="active"><a href="restoran.html" data-nav-section="about">Kreiranje restorana</a></li>
-						<li><a href="meni.html" data-nav-section="services">Kreiranje menija</a></li>
+						<li><a href="restoran.html" data-nav-section="about">Kreiranje restorana</a></li>
+						<li class="active"><a href="meni.html" data-nav-section="services">Kreiranje menija</a></li>
 						<li><a href="recenzije.html" data-nav-section="services">Recenzije</a></li>
-						<li><a href="rezervacije.html" data-nav-section="services">Rezervacije</a></li>					
+						<li><a href="rezervacije.html" data-nav-section="services">Rezervacije</a></li>
+					
 				<br>
 						<button onclick="Logout()" style = "border: none;  background-color: transparent;">
 								<a class="btn btn-info btn-sm">
@@ -99,50 +108,73 @@
 
 		<div id="colorlib-main">
 		
-			<!-- restorani forma -->
-		<section class="colorlib-contact">
+			<section class="colorlib-contact">
 		
-					<div class="red">
-						<h2 style="text-align:center; margin-top:5%; margin-bottom:5%">Kreiranje restorana<h2>
-					</div>
 				<div class="red">
+
+						<div class="services color-1" style="width: 250px; float:left; margin-left: 2%; margin-right: 2%;">
 							
-								<div class="stupac">
+								<div class="desc">
+									<h3>Kreiranje menija</h3><br>
 									<form>
 										<div class="form-group">
-											<input type="text" class="form-control"  id="naziv" name="naziv" placeholder="Naziv restorana" />
+											<input type="text" class="form-control"  id="nazivMenija" name="nazivMenija" placeholder="Naziv menija" />
 										</div>
 										<div class="form-group">
-											<input type="text" class="form-control" id="adresa" name="adresa" placeholder="Adresa restorana" />
+											<input type="number" min="0" class="form-control" id="cijena" name="cijena" placeholder="Cijena menija (kn)" />
 										</div>
 										<div class="form-group">
-											<input type="text" class="form-control"  id="kontakt" name="kontakt" placeholder="Kontakt" /> 
+											<select name="listaRestorani" id="listaRestorani">
+											
+											</select>
 										</div>
 										<div class="form-group">
-											<input type="text" class="form-control"  id="weblink" name="weblink" placeholder="Web link (www.restoran.hr)" /> 
-										</div>
-								</div>
-								<div class="stupac">
-										<div class="form-group">
-											<textarea cols="30" rows="8" class="form-control" id="opis" name="opis" placeholder="Kratki opis restorana" /></textarea>
-										</div>
-										
-										<div class="form-group">
-										<input id="file-input" type="file" name="name" style="display: none;" />
-                <ol id="file-list"></ol><br>
-                <input type="button" class="btn btn-primary btn-send-message" value="Učitaj sliku restorana" onclick="FileDialog();"/><br><br>
-										</div>
-								</div>
-				</div><div class="red" >
-										<div class="form-group">
-											<input type="button" class="btn btn-primary btn-send-message" value="Spremi" onclick="UnesiRestoran();"id="btnRestoran">
+											<input type="button" class="btn btn-primary btn-send-message" value="Kreiraj meni" onclick="KreirajMeni();"id="btnKMeni">
 										</div>
 									</form>
 								</div>
-							
+							</div>
+						<div class="services color-2" style="width: 250px; float:left; margin-left: 2%; margin-right: 2%;">
+						
+							<div class="desc">
+								<h3>Kreiranje jela</h3><br>
+								<form>
+										<div class="form-group">
+											<input type="text" class="form-control"  id="nazivJela" name="nazivJela" placeholder="Naziv jela" />
+										</div><br><br><br><br>
+										
+										<div class="form-group">
+											<input type="button" class="btn btn-primary btn-send-message" value="Kreiraj jelo" onclick="KreirajJelo();"id="btnKJelo">
+										</div>
+									</form>
+							</div>
+						</div>
+						<div class="services color-1" style="width: 250px; float:left; margin-left: 2%; margin-right: 2%;">
+							<div class="desc">
+								<h3>Dodavanje jela na jelovnik</h3><br>
+								<form>
+										<div class="form-group">
+											<select name="listaJela" id="listaJela">
+											
+											</select>
+										</div>
+										<div class="form-group">
+											<select name="listaMenija" id="listaMenija">
+											
+											</select>
+										</div><br><br><br>
+										<div class="form-group">
+											<input type="button" class="btn btn-primary btn-send-message" value="Dodati jelo na jelovnik" onclick="DodatiJelo();"id="btnDJelo">
+										</div>
+									</form>
+							</div>
+						</div>
+				</div>
+				
 			</section>
 			
 		</div>
+		
 	</div>
 	</div>
 	</div>

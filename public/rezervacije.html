@@ -60,12 +60,14 @@
 		width: 100%;
 		text-align: center;
 	}
-	
+	.td{
+		width: 30px;
+	}
 	</style>
 	<div id="colorlib-page">
 		<div class="container-wrap">
 		
-		<aside id="colorlib-aside" class="border js-fullheight">
+		<aside id="colorlib-aside" class="border js-fullheight" style="height: 100%;">
 			<div class="text-center">
 			
 				<div class="author-img" id="slikaKorisnika"></div>
@@ -77,6 +79,7 @@
 					<ul>
 						<li><a href="pocetna.html" data-nav-section="home">Početna</a></li>
 						<li><a href="restoran.html" data-nav-section="about">Kreiranje restorana</a></li>
+						<li><a href="meni.html" data-nav-section="services">Kreiranje menija</a></li>
 						<li><a href="recenzije.html" data-nav-section="services">Recenzije</a></li>
 						<li class="active"><a href="rezervacije.html" data-nav-section="services">Rezervacije</a></li>
 					
@@ -109,12 +112,12 @@
 					<table style="border: 2px; margin-bottom: 5%;">
 						<thead style="background-color: #00bcd4; color: white; font-weight: bold;">
 							<tr>
-								<td>ID rezervacije</td>
-								<td>Naziv restorana</td>
-								<td>Korisnik</td>
-								<td>Dolazak</td>
-								<td>Odlazak</td>
-								<td>Potvrda dolaska</td>
+								<td class="td">ID rezervacije</td>
+								<td class="td">Naziv restorana</td>
+								<td class="td">Korisnik</td>
+								<td class="td">Dolazak</td>
+								<td class="td">Odlazak</td>
+								<td class="td">Potvrda dolaska</td>
 							</tr>
 						</thead>
 						<tbody id="rezervacije" style="background-color: #cce9ef;">
@@ -122,6 +125,29 @@
 						</tbody>
 					</table>
 				</div>
+				<div class="red" id="prikazJelovnika">
+					<table style="border: 2px; margin-bottom: 5%;">
+						<thead style="background-color: #00bcd4; color: white; font-weight: bold;">
+							<tr>
+								<td class="td">ID jelovnika</td>
+								<td class="td">Kolicina</td>
+							</tr>
+						</thead>
+						<tbody id="jelovnik" style="background-color: #cce9ef;">
+							
+						</tbody>
+					</table>
+				</div>
+				<div class="red" id="prikazMenija">
+						<div class="services color-1">
+								<div class="desc">
+									<h3 id="podaciMeni"></h3><br>
+									<p id="jela" style="text-align:center;">
+										
+									</p>
+								</div>
+						</div>
+					</div>
 		
 		</section>
 			
