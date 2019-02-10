@@ -91,6 +91,7 @@ const refRest = firebase.database().ref().child('restoran');
 	
 	
 function FileDialog() {
+
     $('#file-input').trigger('click');
     var inputElement = document.getElementById('file-input');
     inputElement.onchange = function (event) {
@@ -99,8 +100,18 @@ function FileDialog() {
         fileReader.onloadend = function (event) {
             $('#file-list').append("<li id='" + this.value + "'><img height='50px' width='50px' src='" + event.target.result + "' alt='" + this.value + "'></li>&nbsp;&nbsp;");
             datoteke.push(inputElement.files[0]);
+			const ref = firebase.database().ref();
+			ref.child("restoran").on("value", function(snapshot) {
+				var id = snapshot.numChildren();
+				id++;
+				var storageReference = firebase.storage().ref().child("restorani/"+id+".jpg");
+		
+				storageReference.put(inputElement.files[0]);
+			});
         };
     };
+	
+	
 }
 
 function KreirajMeni(){
@@ -165,48 +176,36 @@ function DodatiJelo(){
 	 alert('Jelo je uspješno dodano na jelovnik!');
 }
 
+	var Rid;
 function UnesiRestoran() {
 	const ref = firebase.database().ref();
-	var id;
 	ref.child("restoran").on("value", function(snapshot) {
-		id = snapshot.numChildren();
+		Rid = snapshot.numChildren();
 	});
-	id++; 
+	Rid++; 
     var naziv = document.getElementById('naziv').value;
     var adresa = document.getElementById('adresa').value;
     var kontakt = document.getElementById('kontakt').value;
 	var weblink = document.getElementById('weblink').value;
 	var opis = document.getElementById('opis').value;
 	
-	firebase.database().ref('restoran').child(id).set({
+	//UploadFiles(datoteke, Rid);
+
+	firebase.database().ref('restoran').child(Rid).set({
 		adresa: adresa,
+		brojPregleda: 0,
         kontakt: kontakt,
 		nazivRestorana: naziv,
 		opis: opis,
-		restoranId: id,
-		slika: "gs://hr-foi-restoranko.appspot.com/restorani/"+id+".jpg",
+		restoranId: Rid,
+		slika: "gs://hr-foi-restoranko.appspot.com/restorani/"+Rid+".jpg",
 		webLink: weblink
 	});
 
-	UploadFiles(datoteke, id);
     alert('Restoran je uspješno kreiran!');
     window.location.href = 'https://hr-foi-restoranko.firebaseapp.com/restoran.html';
 }
 
-function UploadFiles(datoteke, id) {
-    for (var i = 0; i < datoteke.length; i++) {
-        Upload(datoteke[i], id);
-    }
-
-}
-function Upload(datoteka, id) {
-    try {
-        var storageReference = firebase.storage().ref("restorani/" +datoteka.name);
-        storageReference.put(datoteka);
-    } catch (exception) {
-        alert("exception.message");
-    }
-}
 window.onload = function () {
     
     initApp();
